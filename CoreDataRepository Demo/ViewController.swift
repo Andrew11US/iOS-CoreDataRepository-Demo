@@ -14,7 +14,9 @@ class ViewController: UIViewController {
         
         let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         let dataManager = DataManager(with: CoreDataRepository<Wallet>(persistentContainer: container))
-//        dataManager.addObject(wallet: Wallet(id: "abc", name: "W1", amount: 123.45))
+//        dataManager.addObject(wallet: Wallet(id: "abcd", name: "W2", amount: 123.45))
+//        dataManager.updateObject(wallet: Wallet(id: "a", name: "AAA", amount: 777.11))
+//        dataManager.removeObject(wallet: Wallet(id: "abcd", name: "W2", amount: 123.45))
         dataManager.getObjects(wallet: Wallet(id: "", name: "", amount: 0))
     }
 
@@ -39,8 +41,7 @@ class DataManager {
     
     func getObjects(wallet: Wallet) -> [Wallet] {
         let objects = try! repository.fetchAll()
-        objects.forEach { print($0.id) }
-        print(<#T##items: Any...##Any#>)
+        objects.forEach { print($0) }
         return objects
     }
     
